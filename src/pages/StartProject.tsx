@@ -11,7 +11,7 @@ import {
   CardTitle 
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BrainCircuit } from "lucide-react";
+import { BrainCircuit, Sparkles } from "lucide-react";
 
 const StartProject = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -34,9 +34,18 @@ const StartProject = () => {
               <h1 className="text-3xl font-bold">Start a Project</h1>
             </div>
             
-            <p className="text-muted-foreground text-lg mb-8">
-              Tell us about your project, and our AI team will help you bring it to life.
-            </p>
+            <div className="bg-gradient-to-r from-indigo-50 to-cyan-50 p-6 rounded-lg border border-blue-100 mb-8">
+              <div className="flex items-start gap-4">
+                <Sparkles className="text-neuro-teal mt-1 h-6 w-6 flex-shrink-0" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2 text-gray-800">Our Neuro Team is Ready to Create</h2>
+                  <p className="text-muted-foreground">
+                    Complete the customer brief below to help our AI understand your vision. The more details you provide, 
+                    the better we can deliver exactly what you need.
+                  </p>
+                </div>
+              </div>
+            </div>
             
             <Tabs defaultValue="designer" className="space-y-6">
               <TabsList className="grid w-full grid-cols-2">
@@ -49,7 +58,7 @@ const StartProject = () => {
                   <CardHeader>
                     <CardTitle className="text-2xl">Kick Off Your Next Masterpiece</CardTitle>
                     <CardDescription>
-                      Tell us about your project with our Customer Brief. We'll guide you from concept to completion using our full neuro-team.
+                      Tell us about your project with our comprehensive Customer Brief. We'll guide you from concept to completion using our full neuro-team.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -63,7 +72,7 @@ const StartProject = () => {
                   <CardHeader>
                     <CardTitle className="text-2xl">Let's Create Something Amazing Together</CardTitle>
                     <CardDescription>
-                      Answer a few questions in our Customer Brief, and we'll build a design for you—no experience needed!
+                      Answer our customer brief questions in a simplified format, and we'll build a design for you—no experience needed!
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
