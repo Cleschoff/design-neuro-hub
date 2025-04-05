@@ -1,7 +1,8 @@
 
+import { useState } from "react";
 import DashboardHeader from "@/components/DashboardHeader";
 import DashboardSidebar from "@/components/DashboardSidebar";
-import { useState } from "react";
+import { CustomerBriefForm } from "@/components/CustomerBriefForm";
 import { 
   Card, 
   CardContent, 
@@ -52,7 +53,7 @@ const StartProject = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <CustomerBriefFormPlaceholder userType="designer" />
+                    <CustomerBriefForm userType="designer" />
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -66,7 +67,7 @@ const StartProject = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <CustomerBriefFormPlaceholder userType="beginner" />
+                    <CustomerBriefForm userType="beginner" />
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -74,27 +75,6 @@ const StartProject = () => {
           </div>
         </main>
       </div>
-    </div>
-  );
-};
-
-// Placeholder component for the form - would be replaced with a real form implementation
-const CustomerBriefFormPlaceholder = ({ userType }: { userType: "designer" | "beginner" }) => {
-  return (
-    <div className="p-6 border border-dashed rounded-lg text-center bg-muted/30">
-      <h3 className="text-lg font-medium mb-3">
-        {userType === "designer" 
-          ? "Professional Project Brief" 
-          : "Simple Project Questionnaire"}
-      </h3>
-      <p className="text-muted-foreground mb-4">
-        {userType === "designer"
-          ? "This form would include detailed questions about project scope, deliverables, timeline, and style preferences."
-          : "This form would include basic questions about what you want to create, colors, and general style."}
-      </p>
-      <p className="text-sm text-muted-foreground">
-        Form implementation coming soon
-      </p>
     </div>
   );
 };
