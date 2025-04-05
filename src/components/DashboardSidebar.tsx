@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { 
   BrainCircuit, Palette, Layout, Lightbulb, 
   BarChart, Search, FileText, Layers, Compass, MountainSnow,
-  Folder, Home, Plus, Settings
+  Folder, Home, Plus, Settings, FileSpreadsheet
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -104,6 +104,12 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
               Projects
             </Button>
           </Link>
+          <Link to="/dashboard/start-project">
+            <Button variant="ghost" className="w-full justify-start">
+              <FileSpreadsheet size={18} className="mr-2" />
+              Start a Project
+            </Button>
+          </Link>
         </div>
         
         <div>
@@ -130,7 +136,7 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
             Settings
           </Button>
         </Link>
-        <Link to="/dashboard/new-project">
+        <Link to="/dashboard/start-project">
           <Button className="w-full mt-2 bg-primary">
             <Plus size={18} className="mr-2" />
             New Project

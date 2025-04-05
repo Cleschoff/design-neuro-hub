@@ -14,6 +14,7 @@ import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
+import StartProject from "./pages/StartProject";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/community" element={<Community />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/neuro/:id" element={<NeuroDetail />} />
+            <Route path="/dashboard/start-project" element={<StartProject />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
