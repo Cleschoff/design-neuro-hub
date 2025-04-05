@@ -23,16 +23,20 @@ const Hero = () => {
           </h1>
           
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8">
-            Solve routine tasks in seconds with specialized AI assistants that streamline your design workflow and boost creativity.
+            Solve routine tasks in seconds with specialized AI assistants that streamline your design workflow and boost creativity — for pros and beginners alike.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/dashboard">
-              <Button size="lg" className="bg-primary gap-2 px-6">
-                Start Designing Now
-                <ArrowRight size={16} />
-              </Button>
-            </Link>
+            <Button size="lg" className="bg-primary gap-2 px-6" onClick={() => {
+              // Smooth scroll to path selection section
+              document.querySelector('#path-selection')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}>
+              Choose Your Path
+              <ArrowRight size={16} />
+            </Button>
             <Link to="/features">
               <Button size="lg" variant="outline" className="gap-2 px-6">
                 Meet the Neuro Team
