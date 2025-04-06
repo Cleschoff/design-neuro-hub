@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -9,13 +8,13 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center mb-4">
               <span className="text-2xl font-bold bg-clip-text text-transparent neuro-gradient mr-2">D</span>
-              <span className="text-lg font-semibold">DesignNeuroHub</span>
+              <span className="text-lg font-semibold">diz.space</span>
             </Link>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-              Your AI Design Team for Faster, Smarter Solutions
+              Your Designer's Space for AI-Powered Design Solutions
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {new Date().getFullYear()} DesignNeuroHub. All rights reserved.
+              © {new Date().getFullYear()} diz.space. All rights reserved.
             </p>
           </div>
           

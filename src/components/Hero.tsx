@@ -14,12 +14,12 @@ const Hero = () => {
         <div className="text-center">
           <div className="inline-flex items-center justify-center mb-4 px-3 py-1.5 rounded-full bg-neuro-sand dark:bg-white/10 text-neuro-navy dark:text-white text-sm font-medium">
             <BrainCircuit size={16} className="mr-2 text-neuro-teal" />
-            <span>Your AI Design Team</span>
+            <span>Designer's Space</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4">
             <span className="block">Meet Your AI-Powered</span>
-            <span className="block bg-clip-text text-transparent neuro-gradient">Design Team</span>
+            <span className="block bg-clip-text text-transparent neuro-gradient">Design Studio</span>
           </h1>
           
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8">

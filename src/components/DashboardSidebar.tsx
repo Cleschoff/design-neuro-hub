@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { 
   BrainCircuit, Palette, Layout, Lightbulb, 
@@ -86,7 +85,7 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
       <div className="flex items-center h-16 px-4 border-b">
         <Link to="/" className="flex items-center">
           <span className="text-2xl font-bold bg-clip-text text-transparent neuro-gradient mr-2">D</span>
-          <span className="text-lg font-semibold">DesignNeuroHub</span>
+          <span className="text-lg font-semibold">diz.space</span>
         </Link>
       </div>
       
