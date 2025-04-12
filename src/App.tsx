@@ -16,6 +16,12 @@ import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
 import StartProject from "./pages/StartProject";
 import DesignTools from "./pages/DesignTools";
+import Projects from "./pages/Projects";
+import Tasks from "./pages/Tasks";
+import Resources from "./pages/Resources";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import Notifications from "./pages/Notifications";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +42,12 @@ const App = () => (
             <Route path="/dashboard/start-project" element={<StartProject />} />
             <Route path="/dashboard/design-tools" element={<DesignTools />} />
             <Route path="/tools/:toolId" element={<DesignTools />} />
+            <Route path="/dashboard/projects" element={<Projects />} />
+            <Route path="/dashboard/tasks" element={<Tasks />} />
+            <Route path="/dashboard/resources" element={<Resources />} />
+            <Route path="/dashboard/profile" element={<Profile />} />
+            <Route path="/dashboard/settings" element={<Settings />} />
+            <Route path="/dashboard/notifications" element={<Notifications />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
