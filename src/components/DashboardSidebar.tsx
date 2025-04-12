@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { 
   BrainCircuit, Palette, Layout, Lightbulb, 
-  Settings, LogOut, FileText, Layers, Tool
+  Settings, LogOut, FileText, Layers, WrenchIcon
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -96,7 +96,7 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
                 : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
             )}
           >
-            <Tool size={20} />
+            <WrenchIcon size={20} />
           </Link>
         </div>
       </aside>
@@ -131,7 +131,7 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
           />
           <SidebarLink 
             href="/dashboard/design-tools" 
-            icon={<Tool size={18} />} 
+            icon={<WrenchIcon size={18} />} 
             text="Design Tools" 
             isActive={currentPath.includes("/design-tools") || currentPath.includes("/tools/")} 
           />
