@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileText, Tool, ArrowRight } from "lucide-react";
+import { FileText, WrenchIcon, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const PathSelection = () => {
@@ -61,7 +61,7 @@ const PathSelection = () => {
           <Card className="border-2 hover:border-neuro-lavender/70 transition-all hover:shadow-lg">
             <CardHeader className="pb-2">
               <div className="w-12 h-12 rounded-full bg-neuro-lavender/10 flex items-center justify-center mb-4">
-                <Tool className="h-6 w-6 text-neuro-lavender" />
+                <WrenchIcon className="h-6 w-6 text-neuro-lavender" />
               </div>
               <CardTitle className="text-2xl">Individual Tools</CardTitle>
               <CardDescription>

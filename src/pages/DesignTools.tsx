@@ -29,7 +29,8 @@ import {
   BookOpen,
   Download,
   Share2,
-  Grid3X3
+  Grid3X3,
+  WrenchIcon
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
