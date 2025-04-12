@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -118,10 +117,10 @@ const formSchema = z.object({
 });
 
 interface CustomerBriefFormProps {
-  userType: "designer" | "beginner";
+  onSubmitComplete?: () => void;
 }
 
-export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
+export function CustomerBriefForm({ onSubmitComplete }: CustomerBriefFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentSection, setCurrentSection] = useState(1);
@@ -166,6 +165,9 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
         description: "Our neuro team will start working on your project!",
       });
       setIsSubmitting(false);
+      if (onSubmitComplete) {
+        onSubmitComplete();
+      }
     }, 1500);
   }
 
@@ -183,13 +185,11 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
     }
   };
 
-  // Progress indicator
   const progress = (currentSection / totalSections) * 100;
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {/* Progress bar */}
         <div className="w-full bg-gray-200 rounded-full h-2.5 mb-6">
           <div 
             className="bg-neuro-teal h-2.5 rounded-full transition-all duration-300" 
@@ -200,7 +200,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </p>
         </div>
 
-        {/* Section 1: Project Basics */}
         {currentSection === 1 && (
           <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
             <CardHeader className="pb-3">
@@ -260,7 +259,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </Card>
         )}
 
-        {/* Section 2: Type and Scope of Work */}
         {currentSection === 2 && (
           <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
             <CardHeader className="pb-3">
@@ -342,7 +340,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </Card>
         )}
 
-        {/* Section 3: Project Objective */}
         {currentSection === 3 && (
           <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
             <CardHeader className="pb-3">
@@ -424,7 +421,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </Card>
         )}
 
-        {/* Section 4: Product Details */}
         {currentSection === 4 && (
           <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
             <CardHeader className="pb-3">
@@ -502,7 +498,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </Card>
         )}
 
-        {/* Section 5: Target Audience */}
         {currentSection === 5 && (
           <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
             <CardHeader className="pb-3">
@@ -580,7 +575,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </Card>
         )}
 
-        {/* Section 6: Design Desires */}
         {currentSection === 6 && (
           <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
             <CardHeader className="pb-3">
@@ -674,7 +668,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </Card>
         )}
 
-        {/* Section 7: Competitors and Timeline */}
         {currentSection === 7 && (
           <>
             <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
@@ -780,7 +773,6 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
           </>
         )}
         
-        {/* Navigation buttons */}
         <div className="flex justify-between">
           <Button 
             type="button" 
@@ -816,4 +808,3 @@ export function CustomerBriefForm({ userType }: CustomerBriefFormProps) {
     </Form>
   );
 }
-

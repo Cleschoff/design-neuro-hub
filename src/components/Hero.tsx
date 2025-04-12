@@ -23,7 +23,7 @@ const Hero = () => {
           </h1>
           
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8">
-            Solve routine tasks in seconds with specialized AI assistants that streamline your design workflow and boost creativity — for pros and beginners alike.
+            Solve routine tasks in seconds with specialized AI assistants that streamline your design workflow and boost creativity.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
