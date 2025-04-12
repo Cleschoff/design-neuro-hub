@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import DashboardHeader from "@/components/DashboardHeader";
 import DashboardSidebar from "@/components/DashboardSidebar";
@@ -6,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Bell, Calendar, CheckCircle, Clock, AlertCircle, Message, FileText } from "lucide-react";
+import { Bell, Calendar, CheckCircle, Clock, AlertCircle, MessageCircle, FileText } from "lucide-react";
 
 const notifications = [
   {
@@ -82,6 +81,8 @@ const Notifications = () => {
         return <FileText className="h-6 w-6 text-green-500" />;
       case "project":
         return <CheckCircle className="h-6 w-6 text-purple-500" />;
+      case "message":
+        return <MessageCircle className="h-6 w-6 text-cyan-500" />;
       default:
         return <Bell className="h-6 w-6 text-gray-500" />;
     }
