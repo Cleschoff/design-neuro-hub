@@ -6,6 +6,7 @@ import {
   User, CheckSquare, Bell, BookOpen, Home, FolderOpen
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useLocale } from "@/context/LocaleContext";
 
 interface SidebarLinkProps {
   href: string;
@@ -52,6 +53,7 @@ interface DashboardSidebarProps {
 const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
   const location = useLocation();
   const currentPath = location.pathname;
+  const { t } = useLocale();
   
   // If the sidebar is closed, return a minimized version that only shows icons
   if (!sidebarOpen) {
@@ -162,74 +164,74 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
       </div>
       
       <div className="px-3 py-2">
-        <SidebarSection title="NAVIGATION">
+        <SidebarSection title={t('dashboardSidebar.navigation')}>
           <SidebarLink 
             href="/dashboard" 
             icon={<Home size={18} />} 
-            text="Home" 
+            text={t('dashboardSidebar.home')} 
             isActive={currentPath === "/dashboard"} 
           />
           <SidebarLink 
             href="/dashboard/projects" 
             icon={<FolderOpen size={18} />} 
-            text="Projects" 
+            text={t('dashboardSidebar.projects')} 
             isActive={currentPath.includes("/projects")} 
           />
           <SidebarLink 
             href="/dashboard/tasks" 
             icon={<CheckSquare size={18} />} 
-            text="Tasks" 
+            text={t('dashboardSidebar.tasks')} 
             isActive={currentPath.includes("/tasks")} 
           />
         </SidebarSection>
         
-        <SidebarSection title="DESIGN SERVICES">
+        <SidebarSection title={t('dashboardSidebar.designServices')}>
           <SidebarLink 
             href="/dashboard/start-project" 
             icon={<FileText size={18} />} 
-            text="Full Design Project" 
+            text={t('dashboardSidebar.fullDesignProject')} 
             isActive={currentPath.includes("/start-project")} 
           />
           <SidebarLink 
             href="/dashboard/design-tools" 
             icon={<WrenchIcon size={18} />} 
-            text="Design Tools" 
+            text={t('dashboardSidebar.designTools')} 
             isActive={currentPath.includes("/design-tools") || currentPath.includes("/tools/")} 
           />
         </SidebarSection>
 
-        <SidebarSection title="USER RESOURCES">
+        <SidebarSection title={t('dashboardSidebar.userResources')}>
           <SidebarLink 
             href="/dashboard/resources" 
             icon={<BookOpen size={18} />} 
-            text="Resources" 
+            text={t('dashboardSidebar.resources')} 
             isActive={currentPath.includes("/resources")} 
           />
           <SidebarLink 
             href="/dashboard/notifications" 
             icon={<Bell size={18} />} 
-            text="Notifications" 
+            text={t('dashboardSidebar.notifications')} 
             isActive={currentPath.includes("/notifications")} 
           />
           <SidebarLink 
             href="/dashboard/profile" 
             icon={<User size={18} />} 
-            text="Profile" 
+            text={t('dashboardSidebar.profile')} 
             isActive={currentPath.includes("/profile")} 
           />
         </SidebarSection>
         
-        <SidebarSection title="ACCOUNT">
+        <SidebarSection title={t('dashboardSidebar.account')}>
           <SidebarLink 
             href="/dashboard/settings" 
             icon={<Settings size={18} />} 
-            text="Settings" 
+            text={t('dashboardSidebar.settings')} 
             isActive={currentPath.includes("/settings")} 
           />
           <SidebarLink 
             href="/logout" 
             icon={<LogOut size={18} />} 
-            text="Logout" 
+            text={t('dashboardSidebar.logout')} 
             isActive={false} 
           />
         </SidebarSection>

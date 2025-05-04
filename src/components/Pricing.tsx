@@ -3,63 +3,66 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const plans = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    description: "Perfect for getting started with AI design assistance.",
-    featured: false,
-    features: [
-      { included: true, text: "Access to 3 Neuro-Assistants" },
-      { included: true, text: "5 Daily Queries" },
-      { included: true, text: "Basic Export Options" },
-      { included: false, text: "Assistant Collaboration" },
-      { included: false, text: "Priority Processing" },
-      { included: false, text: "Team Collaboration" }
-    ]
-  },
-  {
-    name: "Premium",
-    price: "$9.99",
-    period: "per month",
-    description: "For designers who want full access to all assistants.",
-    featured: true,
-    features: [
-      { included: true, text: "Access to All 10 Neuro-Assistants" },
-      { included: true, text: "Unlimited Queries" },
-      { included: true, text: "Advanced Export Options" },
-      { included: true, text: "Assistant Collaboration" },
-      { included: true, text: "Priority Processing" },
-      { included: false, text: "Team Collaboration" }
-    ]
-  },
-  {
-    name: "Team",
-    price: "$29.99",
-    period: "per month",
-    description: "For design teams working together on projects.",
-    featured: false,
-    features: [
-      { included: true, text: "Access to All 10 Neuro-Assistants" },
-      { included: true, text: "Unlimited Queries" },
-      { included: true, text: "Advanced Export Options" },
-      { included: true, text: "Assistant Collaboration" },
-      { included: true, text: "Priority Processing" },
-      { included: true, text: "Team Collaboration (5 members)" }
-    ]
-  }
-];
+import { useLocale } from "@/context/LocaleContext";
 
 const Pricing = () => {
+  const { t } = useLocale();
+
+  const plans = [
+    {
+      name: t('pricing.free.name'),
+      price: t('pricing.free.price'),
+      period: t('pricing.free.period'),
+      description: t('pricing.free.description'),
+      featured: false,
+      features: [
+        { included: true, text: t('pricing.features.access3Neuros') },
+        { included: true, text: t('pricing.features.dailyQueries') },
+        { included: true, text: t('pricing.features.basicExport') },
+        { included: false, text: t('pricing.features.assistantCollab') },
+        { included: false, text: t('pricing.features.priorityProcessing') },
+        { included: false, text: t('pricing.features.teamCollab') }
+      ]
+    },
+    {
+      name: t('pricing.premium.name'),
+      price: t('pricing.premium.price'),
+      period: t('pricing.premium.period'),
+      description: t('pricing.premium.description'),
+      featured: true,
+      features: [
+        { included: true, text: t('pricing.features.access10Neuros') },
+        { included: true, text: t('pricing.features.unlimitedQueries') },
+        { included: true, text: t('pricing.features.advancedExport') },
+        { included: true, text: t('pricing.features.assistantCollab') },
+        { included: true, text: t('pricing.features.priorityProcessing') },
+        { included: false, text: t('pricing.features.teamCollab') }
+      ]
+    },
+    {
+      name: t('pricing.team.name'),
+      price: t('pricing.team.price'),
+      period: t('pricing.team.period'),
+      description: t('pricing.team.description'),
+      featured: false,
+      features: [
+        { included: true, text: t('pricing.features.access10Neuros') },
+        { included: true, text: t('pricing.features.unlimitedQueries') },
+        { included: true, text: t('pricing.features.advancedExport') },
+        { included: true, text: t('pricing.features.assistantCollab') },
+        { included: true, text: t('pricing.features.priorityProcessing') },
+        { included: true, text: t('pricing.features.teamCollabMembers') }
+      ]
+    }
+  ];
+
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Simple, Transparent Pricing</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('pricing.title')}</h2>
           <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Choose the plan that works best for your design needs. No hidden fees or commitments.
+            {t('pricing.subtitle')}
           </p>
         </div>
         
@@ -71,7 +74,7 @@ const Pricing = () => {
             >
               {plan.featured && (
                 <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-primary text-white text-sm font-medium rounded-full">
-                  Most Popular
+                  {t('pricing.premium.popular')}
                 </div>
               )}
               
@@ -102,7 +105,7 @@ const Pricing = () => {
                   className={`w-full ${plan.featured ? 'bg-primary' : ''}`} 
                   variant={plan.featured ? "default" : "outline"}
                 >
-                  {plan.name === "Free" ? "Get Started" : "Subscribe Now"}
+                  {plan.name === t('pricing.free.name') ? t('pricing.free.button') : t('pricing.premium.button')}
                 </Button>
               </Link>
             </Card>

@@ -2,8 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BrainCircuit } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLocale } from "@/context/LocaleContext";
 
 const Hero = () => {
+  const { t } = useLocale();
+
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Decorative elements */}
@@ -14,16 +17,16 @@ const Hero = () => {
         <div className="text-center">
           <div className="inline-flex items-center justify-center mb-4 px-3 py-1.5 rounded-full bg-neuro-sand dark:bg-white/10 text-neuro-navy dark:text-white text-sm font-medium">
             <BrainCircuit size={16} className="mr-2 text-neuro-teal" />
-            <span>Designer's Space</span>
+            <span>{t('hero.designerSpace')}</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4">
-            <span className="block">Meet Your AI-Powered</span>
-            <span className="block bg-clip-text text-transparent neuro-gradient">Design Studio</span>
+            <span className="block">{t('hero.title1')}</span>
+            <span className="block bg-clip-text text-transparent neuro-gradient">{t('hero.title2')}</span>
           </h1>
           
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8">
-            Solve routine tasks in seconds with specialized AI assistants that streamline your design workflow and boost creativity.
+            {t('hero.description')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -34,12 +37,12 @@ const Hero = () => {
                 block: 'start'
               });
             }}>
-              Choose Your Path
+              {t('hero.choosePath')}
               <ArrowRight size={16} />
             </Button>
             <Link to="/features">
               <Button size="lg" variant="outline" className="gap-2 px-6">
-                Meet the Neuro Team
+                {t('hero.meetTeam')}
               </Button>
             </Link>
           </div>

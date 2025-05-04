@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/context/ThemeProvider";
+import { useLocale } from "@/context/LocaleContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t } = useLocale();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -30,15 +32,15 @@ const Navbar = () => {
           
           {/* Desktop nav */}
           <div className="hidden md:flex md:items-center md:space-x-4">
-            <Link to="/" className="nav-link nav-link-active">Home</Link>
-            <Link to="/features" className="nav-link">Features</Link>
-            <Link to="/pricing" className="nav-link">Pricing</Link>
-            <Link to="/community" className="nav-link">Community</Link>
+            <Link to="/" className="nav-link nav-link-active">{t('navigation.home')}</Link>
+            <Link to="/features" className="nav-link">{t('navigation.features')}</Link>
+            <Link to="/pricing" className="nav-link">{t('navigation.pricing')}</Link>
+            <Link to="/community" className="nav-link">{t('navigation.community')}</Link>
             <Button onClick={toggleTheme} variant="ghost" size="icon" className="ml-2">
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </Button>
             <Link to="/dashboard">
-              <Button className="ml-4 bg-primary">Sign In</Button>
+              <Button className="ml-4 bg-primary">{t('navigation.signIn')}</Button>
             </Link>
           </div>
           
@@ -58,12 +60,12 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-background border-b shadow-lg">
           <div className="pt-2 pb-4 space-y-1 px-4">
-            <Link to="/" className="nav-link nav-link-active block py-2">Home</Link>
-            <Link to="/features" className="nav-link block py-2">Features</Link>
-            <Link to="/pricing" className="nav-link block py-2">Pricing</Link>
-            <Link to="/community" className="nav-link block py-2">Community</Link>
+            <Link to="/" className="nav-link nav-link-active block py-2">{t('navigation.home')}</Link>
+            <Link to="/features" className="nav-link block py-2">{t('navigation.features')}</Link>
+            <Link to="/pricing" className="nav-link block py-2">{t('navigation.pricing')}</Link>
+            <Link to="/community" className="nav-link block py-2">{t('navigation.community')}</Link>
             <Link to="/dashboard" className="block">
-              <Button className="w-full mt-4 bg-primary">Sign In</Button>
+              <Button className="w-full mt-4 bg-primary">{t('navigation.signIn')}</Button>
             </Link>
           </div>
         </div>

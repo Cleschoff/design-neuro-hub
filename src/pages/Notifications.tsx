@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import DashboardHeader from "@/components/DashboardHeader";
 import DashboardSidebar from "@/components/DashboardSidebar";
@@ -6,45 +7,46 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Bell, Calendar, CheckCircle, Clock, AlertCircle, MessageCircle, FileText } from "lucide-react";
+import { useLocale } from "@/context/LocaleContext";
 
 const notifications = [
   {
     id: 1,
-    title: "Project Checkpoint Approaching",
-    description: "Brand Redesign for TechX has a checkpoint in 2 days",
-    time: "2 hours ago",
+    title: "Приближается контрольная точка проекта",
+    description: "Ребрендинг для TechX имеет контрольную точку через 2 дня",
+    time: "2 часа назад",
     type: "checkpoint",
     read: false
   },
   {
     id: 2,
-    title: "Task Deadline Tomorrow",
-    description: "Create logo mockups for Brand Redesign project",
-    time: "Yesterday",
+    title: "Срок выполнения задачи завтра",
+    description: "Создать макеты логотипа для проекта ребрендинга",
+    time: "Вчера",
     type: "task",
     read: false
   },
   {
     id: 3,
-    title: "New Design Resource Available",
-    description: "Color Theory Guide has been added to Resources",
-    time: "2 days ago",
+    title: "Новый ресурс по дизайну доступен",
+    description: "Руководство по теории цвета было добавлено в Ресурсы",
+    time: "2 дня назад",
     type: "resource",
     read: true
   },
   {
     id: 4,
-    title: "Project Completed",
-    description: "Social Media Campaign has been marked as completed",
-    time: "3 days ago",
+    title: "Проект завершен",
+    description: "Кампания в социальных сетях была отмечена как завершенная",
+    time: "3 дня назад",
     type: "project",
     read: true
   },
   {
     id: 5,
-    title: "Checkpoint Completed",
-    description: "Initial mockups for Website Redesign approved",
-    time: "5 days ago",
+    title: "Контрольная точка завершена",
+    description: "Начальные макеты для редизайна веб-сайта утверждены",
+    time: "5 дней назад",
     type: "checkpoint",
     read: true
   }
@@ -53,6 +55,7 @@ const notifications = [
 const Notifications = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [notificationList, setNotificationList] = useState(notifications);
+  const { t } = useLocale();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -101,15 +104,15 @@ const Notifications = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-2xl font-bold">Notifications</h1>
-                <p className="text-muted-foreground">Keep track of important updates and reminders</p>
+                <h1 className="text-2xl font-bold">{t('notifications.title')}</h1>
+                <p className="text-muted-foreground">{t('notifications.subtitle')}</p>
               </div>
               <div className="flex gap-2">
                 <Button variant="outline" onClick={markAllAsRead}>
-                  Mark All as Read
+                  {t('notifications.markAllAsRead')}
                 </Button>
                 <Button variant="outline">
-                  <Bell className="mr-2 h-4 w-4" /> Settings
+                  <Bell className="mr-2 h-4 w-4" /> {t('notifications.settings')}
                 </Button>
               </div>
             </div>
@@ -117,24 +120,24 @@ const Notifications = () => {
             <Tabs defaultValue="all" className="space-y-4">
               <TabsList>
                 <TabsTrigger value="all">
-                  All 
+                  {t('notifications.all')} 
                   {unreadCount > 0 && (
                     <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">
                       {unreadCount}
                     </Badge>
                   )}
                 </TabsTrigger>
-                <TabsTrigger value="unread">Unread</TabsTrigger>
-                <TabsTrigger value="checkpoints">Checkpoints</TabsTrigger>
-                <TabsTrigger value="tasks">Tasks</TabsTrigger>
-                <TabsTrigger value="resources">Resources</TabsTrigger>
+                <TabsTrigger value="unread">{t('notifications.unread')}</TabsTrigger>
+                <TabsTrigger value="checkpoints">{t('notifications.checkpoints')}</TabsTrigger>
+                <TabsTrigger value="tasks">{t('notifications.tasks')}</TabsTrigger>
+                <TabsTrigger value="resources">{t('notifications.resources')}</TabsTrigger>
               </TabsList>
               
               <TabsContent value="all" className="space-y-4">
                 <Card>
                   <CardHeader className="pb-3">
-                    <CardTitle>Recent Notifications</CardTitle>
-                    <CardDescription>You have {unreadCount} unread notifications</CardDescription>
+                    <CardTitle>{t('notifications.recentNotifications')}</CardTitle>
+                    <CardDescription>{t('notifications.unreadCount', { count: unreadCount })}</CardDescription>
                   </CardHeader>
                   <CardContent className="p-0">
                     <div className="divide-y">
@@ -152,7 +155,7 @@ const Notifications = () => {
                                 {notification.title}
                                 {!notification.read && (
                                   <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">
-                                    New
+                                    {t('notifications.new')}
                                   </Badge>
                                 )}
                               </h4>
@@ -162,10 +165,10 @@ const Notifications = () => {
                               {notification.description}
                             </p>
                             <div className="flex gap-2 mt-2">
-                              <Button variant="link" className="h-auto p-0 text-xs">View Details</Button>
+                              <Button variant="link" className="h-auto p-0 text-xs">{t('notifications.viewDetails')}</Button>
                               {!notification.read && (
                                 <Button variant="link" className="h-auto p-0 text-xs" onClick={() => markAsRead(notification.id)}>
-                                  Mark as Read
+                                  {t('notifications.markAsRead')}
                                 </Button>
                               )}
                             </div>
@@ -176,9 +179,9 @@ const Notifications = () => {
                       {notificationList.length === 0 && (
                         <div className="py-12 text-center">
                           <Bell className="h-12 w-12 text-muted-foreground/30 mx-auto mb-4" />
-                          <h3 className="text-lg font-medium">No notifications</h3>
+                          <h3 className="text-lg font-medium">{t('notifications.noNotifications')}</h3>
                           <p className="text-sm text-muted-foreground mt-1">
-                            You're all caught up! We'll notify you when there's something new.
+                            {t('notifications.noNotificationsDesc')}
                           </p>
                         </div>
                       )}
@@ -190,16 +193,16 @@ const Notifications = () => {
               <TabsContent value="unread">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Unread Notifications</CardTitle>
-                    <CardDescription>Notifications you haven't seen yet</CardDescription>
+                    <CardTitle>{t('notifications.unread')}</CardTitle>
+                    <CardDescription>{t('notifications.unread')}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     {unreadCount === 0 ? (
                       <div className="py-8 text-center">
                         <CheckCircle className="h-12 w-12 text-muted-foreground/30 mx-auto mb-4" />
-                        <h3 className="text-lg font-medium">All caught up!</h3>
+                        <h3 className="text-lg font-medium">{t('notifications.allCaughtUp')}</h3>
                         <p className="text-sm text-muted-foreground mt-1">
-                          You have no unread notifications.
+                          {t('notifications.noUnreadNotifications')}
                         </p>
                       </div>
                     ) : (
@@ -219,7 +222,7 @@ const Notifications = () => {
                                   <h4 className="text-sm font-semibold">
                                     {notification.title}
                                     <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">
-                                      New
+                                      {t('notifications.new')}
                                     </Badge>
                                   </h4>
                                   <p className="text-xs text-muted-foreground">{notification.time}</p>
@@ -228,9 +231,9 @@ const Notifications = () => {
                                   {notification.description}
                                 </p>
                                 <div className="flex gap-2 mt-2">
-                                  <Button variant="link" className="h-auto p-0 text-xs">View Details</Button>
+                                  <Button variant="link" className="h-auto p-0 text-xs">{t('notifications.viewDetails')}</Button>
                                   <Button variant="link" className="h-auto p-0 text-xs" onClick={() => markAsRead(notification.id)}>
-                                    Mark as Read
+                                    {t('notifications.markAsRead')}
                                   </Button>
                                 </div>
                               </div>
@@ -246,11 +249,11 @@ const Notifications = () => {
               <TabsContent value="checkpoints">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Checkpoint Notifications</CardTitle>
-                    <CardDescription>Updates related to project checkpoints</CardDescription>
+                    <CardTitle>{t('notifications.checkpointNotifications')}</CardTitle>
+                    <CardDescription>{t('notifications.checkpointDesc')}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Checkpoint notifications will appear here.</p>
+                    <p className="text-muted-foreground">Уведомления о контрольных точках будут отображаться здесь.</p>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -258,11 +261,11 @@ const Notifications = () => {
               <TabsContent value="tasks">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Task Notifications</CardTitle>
-                    <CardDescription>Updates related to your assigned tasks</CardDescription>
+                    <CardTitle>{t('notifications.taskNotifications')}</CardTitle>
+                    <CardDescription>{t('notifications.taskDesc')}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Task notifications will appear here.</p>
+                    <p className="text-muted-foreground">Уведомления о задачах будут отображаться здесь.</p>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -270,11 +273,11 @@ const Notifications = () => {
               <TabsContent value="resources">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Resource Notifications</CardTitle>
-                    <CardDescription>Updates about new design resources</CardDescription>
+                    <CardTitle>{t('notifications.resourceNotifications')}</CardTitle>
+                    <CardDescription>{t('notifications.resourceDesc')}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Resource notifications will appear here.</p>
+                    <p className="text-muted-foreground">Уведомления о ресурсах будут отображаться здесь.</p>
                   </CardContent>
                 </Card>
               </TabsContent>

@@ -1,6 +1,11 @@
+
 import { Link } from "react-router-dom";
+import { useLocale } from "@/context/LocaleContext";
 
 const Footer = () => {
+  const { t } = useLocale();
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer className="bg-secondary/80 border-t py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,40 +16,40 @@ const Footer = () => {
               <span className="text-lg font-semibold">diz.space</span>
             </Link>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-              Your Designer's Space for AI-Powered Design Solutions
+              {t('footer.description')}
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {new Date().getFullYear()} diz.space. All rights reserved.
+              {t('footer.copyright', { year: currentYear })}
             </p>
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Product</h3>
+            <h3 className="font-semibold mb-4">{t('footer.product')}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/features" className="text-gray-500 hover:text-primary">Features</Link></li>
-              <li><Link to="/pricing" className="text-gray-500 hover:text-primary">Pricing</Link></li>
-              <li><Link to="/dashboard" className="text-gray-500 hover:text-primary">Dashboard</Link></li>
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Changelog</Link></li>
+              <li><Link to="/features" className="text-gray-500 hover:text-primary">{t('footer.features')}</Link></li>
+              <li><Link to="/pricing" className="text-gray-500 hover:text-primary">{t('footer.pricing')}</Link></li>
+              <li><Link to="/dashboard" className="text-gray-500 hover:text-primary">{t('footer.dashboard')}</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.changelog')}</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-semibold mb-4">{t('footer.resources')}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Documentation</Link></li>
-              <li><Link to="/community" className="text-gray-500 hover:text-primary">Community</Link></li>
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Tutorials</Link></li>
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Blog</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.documentation')}</Link></li>
+              <li><Link to="/community" className="text-gray-500 hover:text-primary">{t('footer.community')}</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.tutorials')}</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.blog')}</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
+            <h3 className="font-semibold mb-4">{t('footer.company')}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="text-gray-500 hover:text-primary">About Us</Link></li>
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Careers</Link></li>
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Privacy Policy</Link></li>
-              <li><Link to="/" className="text-gray-500 hover:text-primary">Terms of Service</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.aboutUs')}</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.careers')}</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.privacyPolicy')}</Link></li>
+              <li><Link to="/" className="text-gray-500 hover:text-primary">{t('footer.termsOfService')}</Link></li>
             </ul>
           </div>
         </div>
