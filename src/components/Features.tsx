@@ -1,36 +1,39 @@
 
 import { CheckCircle2 } from "lucide-react";
+import { useLocale } from "@/context/LocaleContext";
 
 const Features = () => {
+  const { t } = useLocale();
+
   const featureList = [
     {
-      title: "AI Design Team",
-      description: "Access 10 specialized AI assistants for different design tasks",
+      title: t('features.items.aiDesignTeam.title'),
+      description: t('features.items.aiDesignTeam.description'),
       icon: <CheckCircle2 className="text-neuro-teal" size={20} />
     },
     {
-      title: "Real-Time Feedback",
-      description: "Get instant suggestions as you work on your designs",
+      title: t('features.items.realTimeFeedback.title'),
+      description: t('features.items.realTimeFeedback.description'),
       icon: <CheckCircle2 className="text-neuro-teal" size={20} />
     },
     {
-      title: "File Integration",
-      description: "Upload and analyze briefs, sketches, and reference materials",
+      title: t('features.items.fileIntegration.title'),
+      description: t('features.items.fileIntegration.description'),
       icon: <CheckCircle2 className="text-neuro-teal" size={20} />
     },
     {
-      title: "Assistant Collaboration",
-      description: "Combine assistants for complex tasks with integrated outputs",
+      title: t('features.items.assistantCollab.title'),
+      description: t('features.items.assistantCollab.description'),
       icon: <CheckCircle2 className="text-neuro-teal" size={20} />
     },
     {
-      title: "Export Options",
-      description: "Download outputs in common formats (PDF, PNG, etc.)",
+      title: t('features.items.exportOptions.title'),
+      description: t('features.items.exportOptions.description'),
       icon: <CheckCircle2 className="text-neuro-teal" size={20} />
     },
     {
-      title: "Learning AI",
-      description: "Assistants adapt to your preferences and style over time",
+      title: t('features.items.learningAI.title'),
+      description: t('features.items.learningAI.description'),
       icon: <CheckCircle2 className="text-neuro-teal" size={20} />
     }
   ];
@@ -39,9 +42,9 @@ const Features = () => {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Work Smarter, Not Harder</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('features.title')}</h2>
           <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            DesignNeuroHub streamlines your workflow with powerful features that help you create better designs in less time.
+            {t('features.subtitle')}
           </p>
         </div>
         

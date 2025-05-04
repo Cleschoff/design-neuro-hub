@@ -31,7 +31,7 @@ const DashboardHeader = ({ toggleSidebar, sidebarOpen }: { toggleSidebar: () => 
         <div className="relative w-full">
           <Search size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <Input 
-            placeholder="Поиск проектов или задач..." 
+            placeholder={t('dashboard.search')} 
             className="pl-10 w-full" 
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}

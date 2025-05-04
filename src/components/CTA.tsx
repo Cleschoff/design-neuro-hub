@@ -2,8 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLocale } from "@/context/LocaleContext";
 
 const CTA = () => {
+  const { t } = useLocale();
+  
   return (
     <section className="py-16 relative overflow-hidden">
       {/* Decorative elements */}
@@ -12,19 +15,19 @@ const CTA = () => {
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-          <span className="block mb-2">Ready to Transform Your</span>
-          <span className="bg-clip-text text-transparent neuro-gradient">Design Workflow?</span>
+          <span className="block mb-2">{t('cta.title.part1')}</span>
+          <span className="bg-clip-text text-transparent neuro-gradient">{t('cta.title.part2')}</span>
         </h2>
         <p className="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-8">
-          Join thousands of designers who are saving time, boosting creativity, and delivering better results with DesignNeuroHub.
+          {t('cta.description')}
         </p>
         <Link to="/dashboard">
           <Button size="lg" className="bg-primary gap-2 px-8">
-            Get Started for Free
+            {t('cta.button')}
             <ArrowRight size={16} />
           </Button>
         </Link>
-        <p className="text-sm text-gray-500 mt-4">No credit card required. Start with our free plan today.</p>
+        <p className="text-sm text-gray-500 mt-4">{t('cta.noCreditCard')}</p>
       </div>
     </section>
   );
