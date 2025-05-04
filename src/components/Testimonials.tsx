@@ -6,7 +6,10 @@ import { useLocale } from "@/context/LocaleContext";
 const Testimonials = () => {
   const { t } = useLocale();
 
-  const testimonials = t('testimonials.items');
+  // Get testimonials from localization ensuring it's an array
+  const testimonials = Array.isArray(t('testimonials.items')) 
+    ? t('testimonials.items') 
+    : []; // Fallback to empty array if not an array
 
   return (
     <section className="py-16 bg-secondary/30">
