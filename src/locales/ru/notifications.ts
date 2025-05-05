@@ -1,0 +1,27 @@
+
+export const notifications = {
+  title: "Уведомления",
+  subtitle: "Отслеживайте важные обновления и напоминания",
+  markAllAsRead: "Отметить все как прочитанные",
+  settings: "Настройки",
+  all: "Все",
+  unread: "Непрочитанные",
+  checkpoints: "Контрольные точки",
+  tasks: "Задачи",
+  resources: "Ресурсы",
+  recentNotifications: "Последние уведомления",
+  unreadCount: "У вас {count} непрочитанных уведомлений",
+  noNotifications: "Нет уведомлений",
+  noNotificationsDesc: "Вы в курсе всего! Мы уведомим вас, когда появится что-то новое.",
+  allCaughtUp: "Вы в курсе всего!",
+  noUnreadNotifications: "У вас нет непрочитанных уведомлений.",
+  checkpointNotifications: "Уведомления о контрольных точках",
+  checkpointDesc: "Обновления, связанные с контрольными точками проекта",
+  taskNotifications: "Уведомления о задачах",
+  taskDesc: "Обновления, связанные с вашими назначенными задачами",
+  resourceNotifications: "Уведомления о ресурсах",
+  resourceDesc: "Обновления о новых ресурсах дизайна",
+  viewDetails: "Посмотреть детали",
+  markAsRead: "Отметить как прочитанное",
+  new: "Новое"
+};
