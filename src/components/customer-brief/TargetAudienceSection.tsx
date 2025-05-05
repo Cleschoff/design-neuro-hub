@@ -6,21 +6,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Users } from "lucide-react";
 import { UseFormReturn } from "react-hook-form";
 import { CustomerBriefFormData } from "@/types/customer-brief";
+import { useLocale } from "@/context/LocaleContext";
 
 interface TargetAudienceSectionProps {
   form: UseFormReturn<CustomerBriefFormData>;
 }
 
 const TargetAudienceSection: React.FC<TargetAudienceSectionProps> = ({ form }) => {
+  const { t } = useLocale();
+  
   return (
     <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
           <Users className="h-5 w-5 text-neuro-teal" />
-          <CardTitle className="text-lg">4. Target Audience</CardTitle>
+          <CardTitle className="text-lg">{t('customerBrief.sections.targetAudience')}</CardTitle>
         </div>
         <CardDescription>
-          Help us understand who you're trying to reach
+          {t('customerBrief.sections.targetAudienceDesc')}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -29,16 +32,16 @@ const TargetAudienceSection: React.FC<TargetAudienceSectionProps> = ({ form }) =
           name="targetAudience"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Audience Demographics</FormLabel>
+              <FormLabel>{t('customerBrief.fields.audienceDemographics')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Who is your primary audience? Include demographics (age, gender, location, income level, etc.)"
+                  placeholder={t('customerBrief.fields.audienceDemographicsPlaceholder')}
                   className="min-h-[100px]"
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                The more we know about your audience, the better we can tailor the design.
+                {t('customerBrief.fields.audienceDemographicsDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -50,16 +53,16 @@ const TargetAudienceSection: React.FC<TargetAudienceSectionProps> = ({ form }) =
           name="audienceNeeds"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Audience Needs and Pain Points</FormLabel>
+              <FormLabel>{t('customerBrief.fields.audienceNeeds')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="What problems or needs does your audience have that your product/service addresses?"
+                  placeholder={t('customerBrief.fields.audienceNeedsPlaceholder')}
                   className="min-h-[100px]"
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                Understanding their challenges helps create more effective designs.
+                {t('customerBrief.fields.audienceNeedsDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -71,15 +74,15 @@ const TargetAudienceSection: React.FC<TargetAudienceSectionProps> = ({ form }) =
           name="audiencePlatforms"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Audience Platforms and Behavior</FormLabel>
+              <FormLabel>{t('customerBrief.fields.audiencePlatforms')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Where does your audience spend time online? How do they typically engage with content? (optional)"
+                  placeholder={t('customerBrief.fields.audiencePlatformsPlaceholder')}
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                This helps us design with the right platform context in mind.
+                {t('customerBrief.fields.audiencePlatformsDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>

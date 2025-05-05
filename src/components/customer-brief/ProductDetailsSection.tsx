@@ -6,21 +6,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { MessageSquare } from "lucide-react";
 import { UseFormReturn } from "react-hook-form";
 import { CustomerBriefFormData } from "@/types/customer-brief";
+import { useLocale } from "@/context/LocaleContext";
 
 interface ProductDetailsSectionProps {
   form: UseFormReturn<CustomerBriefFormData>;
 }
 
 const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({ form }) => {
+  const { t } = useLocale();
+  
   return (
     <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
           <MessageSquare className="h-5 w-5 text-neuro-lavender" />
-          <CardTitle className="text-lg">3. Product Details</CardTitle>
+          <CardTitle className="text-lg">{t('customerBrief.sections.productDetails')}</CardTitle>
         </div>
         <CardDescription>
-          Tell us about the product or service being featured
+          {t('customerBrief.sections.productDetailsDesc')}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -29,16 +32,16 @@ const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({ form }) =
           name="productDetails"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Product/Service Information</FormLabel>
+              <FormLabel>{t('customerBrief.fields.productInfo')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="What is the main service/product you need to convey? What does it do?"
+                  placeholder={t('customerBrief.fields.productInfoPlaceholder')}
                   className="min-h-[100px]"
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                Provide a clear description of what you're promoting.
+                {t('customerBrief.fields.productInfoDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -50,16 +53,16 @@ const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({ form }) =
           name="valueProposition"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Unique Value Proposition</FormLabel>
+              <FormLabel>{t('customerBrief.fields.valueProposition')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="What makes your product/service unique? Why should customers choose you?"
+                  placeholder={t('customerBrief.fields.valuePropositionPlaceholder')}
                   className="min-h-[100px]"
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                Explain what sets you apart from alternatives.
+                {t('customerBrief.fields.valuePropositionDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -71,15 +74,15 @@ const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({ form }) =
           name="keyBenefits"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Key Benefits to Highlight</FormLabel>
+              <FormLabel>{t('customerBrief.fields.keyBenefits')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="What are the most important benefits to showcase visually? (optional)"
+                  placeholder={t('customerBrief.fields.keyBenefitsPlaceholder')}
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                List the key selling points you want emphasized in the design.
+                {t('customerBrief.fields.keyBenefitsDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>

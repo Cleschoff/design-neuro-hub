@@ -6,21 +6,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { TrendingUp } from "lucide-react";
 import { UseFormReturn } from "react-hook-form";
 import { CustomerBriefFormData } from "@/types/customer-brief";
+import { useLocale } from "@/context/LocaleContext";
 
 interface CompetitionSectionProps {
   form: UseFormReturn<CustomerBriefFormData>;
 }
 
 const CompetitionSection: React.FC<CompetitionSectionProps> = ({ form }) => {
+  const { t } = useLocale();
+  
   return (
     <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-neuro-mint" />
-          <CardTitle className="text-lg">6. Competitors</CardTitle>
+          <CardTitle className="text-lg">{t('customerBrief.sections.competition')}</CardTitle>
         </div>
         <CardDescription>
-          Help us understand your market position
+          {t('customerBrief.sections.competitionDesc')}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -29,15 +32,15 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ form }) => {
           name="competitors"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Main Competitors</FormLabel>
+              <FormLabel>{t('customerBrief.fields.mainCompetitors')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Who are your main competitors? Any examples of their designs worth noting? (optional)"
+                  placeholder={t('customerBrief.fields.mainCompetitorsPlaceholder')}
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                This helps us understand your market positioning.
+                {t('customerBrief.fields.mainCompetitorsDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -49,10 +52,10 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ form }) => {
           name="marketDifferentiation"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Desired Market Position</FormLabel>
+              <FormLabel>{t('customerBrief.fields.marketPosition')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="How do you want to position yourself relative to competitors? (leader, innovator, accessible alternative, etc.) (optional)"
+                  placeholder={t('customerBrief.fields.marketPositionPlaceholder')}
                   {...field} 
                 />
               </FormControl>

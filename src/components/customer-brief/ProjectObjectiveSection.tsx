@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Target } from "lucide-react";
 import { UseFormReturn } from "react-hook-form";
 import { CustomerBriefFormData, UserExperienceLevel } from "@/types/customer-brief";
+import { useLocale } from "@/context/LocaleContext";
 
 interface ProjectObjectiveSectionProps {
   form: UseFormReturn<CustomerBriefFormData>;
@@ -13,15 +14,17 @@ interface ProjectObjectiveSectionProps {
 }
 
 const ProjectObjectiveSection: React.FC<ProjectObjectiveSectionProps> = ({ form, userType = "beginner" }) => {
+  const { t } = useLocale();
+  
   return (
     <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
           <Target className="h-5 w-5 text-neuro-mint" />
-          <CardTitle className="text-lg">2. Project Objective</CardTitle>
+          <CardTitle className="text-lg">{t('customerBrief.sections.projectObjective')}</CardTitle>
         </div>
         <CardDescription>
-          Tell us what you're trying to achieve with this project
+          {t('customerBrief.sections.projectObjectiveDesc')}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -30,18 +33,18 @@ const ProjectObjectiveSection: React.FC<ProjectObjectiveSectionProps> = ({ form,
           name="projectObjective"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Purpose</FormLabel>
+              <FormLabel>{t('customerBrief.fields.projectPurpose')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="What's the core purpose of this project? (promotion, brand awareness, new product launch, etc.)"
+                  placeholder={t('customerBrief.fields.projectPurposePlaceholder')}
                   className="min-h-[100px]"
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
                 {userType === "beginner" 
-                  ? "Tell us why you need this design created." 
-                  : "Explain the business context and main goal of the project."}
+                  ? t('customerBrief.fields.projectPurposeBeginnerDesc')
+                  : t('customerBrief.fields.projectPurposeProDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -53,16 +56,16 @@ const ProjectObjectiveSection: React.FC<ProjectObjectiveSectionProps> = ({ form,
           name="desiredOutcome"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Desired Outcome</FormLabel>
+              <FormLabel>{t('customerBrief.fields.desiredOutcome')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="What specific actions or responses do you want from your audience? (purchases, sign-ups, brand recognition)"
+                  placeholder={t('customerBrief.fields.desiredOutcomePlaceholder')}
                   className="min-h-[100px]"
                   {...field} 
                 />
               </FormControl>
               <FormDescription>
-                Be clear about what you want the design to accomplish.
+                {t('customerBrief.fields.desiredOutcomeDesc')}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -75,15 +78,15 @@ const ProjectObjectiveSection: React.FC<ProjectObjectiveSectionProps> = ({ form,
             name="successMetrics"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Success Metrics</FormLabel>
+                <FormLabel>{t('customerBrief.fields.successMetrics')}</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="How will you measure success? (clicks, conversions, engagement metrics)"
+                    placeholder={t('customerBrief.fields.successMetricsPlaceholder')}
                     {...field} 
                   />
                 </FormControl>
                 <FormDescription>
-                  Define how you'll evaluate the effectiveness of the design.
+                  {t('customerBrief.fields.successMetricsDesc')}
                 </FormDescription>
                 <FormMessage />
               </FormItem>

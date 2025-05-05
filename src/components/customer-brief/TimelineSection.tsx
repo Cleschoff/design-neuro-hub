@@ -7,18 +7,21 @@ import { Clock } from "lucide-react";
 import { UseFormReturn } from "react-hook-form";
 import { CustomerBriefFormData } from "@/types/customer-brief";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useLocale } from "@/context/LocaleContext";
 
 interface TimelineSectionProps {
   form: UseFormReturn<CustomerBriefFormData>;
 }
 
 const TimelineSection: React.FC<TimelineSectionProps> = ({ form }) => {
+  const { t } = useLocale();
+  
   return (
     <Card className="border-dashed border-muted-foreground/20 animate-fade-in">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
           <Clock className="h-5 w-5 text-neuro-lavender" />
-          <CardTitle className="text-lg">7. Timeline & Additional Info</CardTitle>
+          <CardTitle className="text-lg">{t('customerBrief.sections.timelineTitle')}</CardTitle>
         </div>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -27,18 +30,18 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ form }) => {
           name="timeline"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Timeline</FormLabel>
+              <FormLabel>{t('customerBrief.fields.timeline')}</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select timeline" />
+                    <SelectValue placeholder={t('customerBrief.fields.selectTimeline')} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="urgent">Urgent (1-2 days)</SelectItem>
-                  <SelectItem value="standard">Standard (3-5 days)</SelectItem>
-                  <SelectItem value="relaxed">Relaxed (1-2 weeks)</SelectItem>
-                  <SelectItem value="ongoing">Ongoing Project</SelectItem>
+                  <SelectItem value="urgent">{t('customerBrief.fields.urgent')}</SelectItem>
+                  <SelectItem value="standard">{t('customerBrief.fields.standard')}</SelectItem>
+                  <SelectItem value="relaxed">{t('customerBrief.fields.relaxed')}</SelectItem>
+                  <SelectItem value="ongoing">{t('customerBrief.fields.ongoing')}</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -51,10 +54,10 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ form }) => {
           name="additionalNotes"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Additional Notes</FormLabel>
+              <FormLabel>{t('customerBrief.fields.additionalNotes')}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Anything else you'd like our neuro team to know? (optional)"
+                  placeholder={t('customerBrief.fields.additionalNotesPlaceholder')}
                   {...field} 
                 />
               </FormControl>
