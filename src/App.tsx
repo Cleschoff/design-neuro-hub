@@ -23,6 +23,7 @@ import Resources from "./pages/Resources";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Notifications from "./pages/Notifications";
+import TypographySelection from "./pages/TypographySelection";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
               <Route path="/dashboard/start-project" element={<StartProject />} />
               <Route path="/dashboard/design-tools" element={<DesignTools />} />
               <Route path="/tools/:toolId" element={<DesignTools />} />
+              <Route path="/tools/typography" element={<TypographySelection />} />
               <Route path="/dashboard/projects" element={<Projects />} />
               <Route path="/dashboard/tasks" element={<Tasks />} />
               <Route path="/dashboard/resources" element={<Resources />} />

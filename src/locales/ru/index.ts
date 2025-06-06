@@ -13,6 +13,7 @@ import { recentProjects } from './recentProjects';
 import { cta } from './cta';
 import { dashboard } from './dashboard';
 import { customerBrief } from './customerBrief';
+import { typographySelection } from './typographySelection';
 
 export const ru = {
   navigation,
@@ -29,4 +30,5 @@ export const ru = {
   cta,
   dashboard,
   customerBrief,
+  typographySelection,
 };

@@ -10,15 +10,6 @@ import {
   CardTitle, 
   CardFooter 
 } from "@/components/ui/card";
-import { 
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { 
   ImageIcon, 
@@ -27,10 +18,7 @@ import {
   Layers, 
   Search, 
   BookOpen,
-  Download,
-  Share2,
-  Grid3X3,
-  WrenchIcon
+  Grid3X3
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -47,42 +35,48 @@ const DesignTools = () => {
       name: "Find References",
       description: "Discover inspiration and references for your design projects",
       icon: <Search className="h-8 w-8 text-neuro-teal" />,
-      shortDesc: "Find visual inspiration"
+      shortDesc: "Find visual inspiration",
+      route: "/tools/references"
     },
     {
       id: "typography",
       name: "Typography Selection",
       description: "Find the perfect font pairings for your brand or project",
       icon: <Type className="h-8 w-8 text-neuro-mint" />,
-      shortDesc: "Choose fonts and typography"
+      shortDesc: "Choose fonts and typography",
+      route: "/tools/typography"
     },
     {
       id: "colors",
       name: "Color Palette",
       description: "Generate harmonious color schemes for your designs",
       icon: <Palette className="h-8 w-8 text-neuro-coral" />,
-      shortDesc: "Create color palettes"
+      shortDesc: "Create color palettes",
+      route: "/tools/colors"
     },
     {
       id: "imageGen",
       name: "Image Generation",
       description: "Create custom images, illustrations, and graphics",
       icon: <ImageIcon className="h-8 w-8 text-neuro-lavender" />,
-      shortDesc: "Generate custom images"
+      shortDesc: "Generate custom images",
+      route: "/tools/image-generation"
     },
     {
       id: "composition",
       name: "Layout Assistance",
       description: "Get help with composition and visual hierarchy",
       icon: <Grid3X3 className="h-8 w-8 text-neuro-sand" />,
-      shortDesc: "Optimize layout and structure"
+      shortDesc: "Optimize layout and structure",
+      route: "/tools/composition"
     },
     {
       id: "assets",
       name: "Asset Library",
       description: "Access our collection of design assets and templates",
       icon: <Layers className="h-8 w-8 text-neuro-teal" />,
-      shortDesc: "Use pre-made assets"
+      shortDesc: "Use pre-made assets",
+      route: "/tools/assets"
     }
   ];
 
@@ -113,7 +107,7 @@ const DesignTools = () => {
                     <CardDescription>{tool.description}</CardDescription>
                   </CardHeader>
                   <CardFooter className="p-6 pt-2 flex justify-between">
-                    <Link to={`/tools/${tool.id}`}>
+                    <Link to={tool.route}>
                       <Button>Use Tool</Button>
                     </Link>
                   </CardFooter>
