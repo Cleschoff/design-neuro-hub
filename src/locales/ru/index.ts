@@ -14,6 +14,7 @@ import { cta } from './cta';
 import { dashboard } from './dashboard';
 import { customerBrief } from './customerBrief';
 import { typographySelection } from './typographySelection';
+import { colorPalette } from './colorPalette';
 
 export const ru = {
   navigation,
@@ -31,4 +32,5 @@ export const ru = {
   dashboard,
   customerBrief,
   typographySelection,
+  colorPalette,
 };

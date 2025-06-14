@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,6 +23,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Notifications from "./pages/Notifications";
 import TypographySelection from "./pages/TypographySelection";
+import ColorPalette from "./pages/ColorPalette";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +46,7 @@ const App = () => (
               <Route path="/dashboard/design-tools" element={<DesignTools />} />
               <Route path="/tools/:toolId" element={<DesignTools />} />
               <Route path="/tools/typography" element={<TypographySelection />} />
+              <Route path="/tools/colors" element={<ColorPalette />} />
               <Route path="/dashboard/projects" element={<Projects />} />
               <Route path="/dashboard/tasks" element={<Tasks />} />
               <Route path="/dashboard/resources" element={<Resources />} />
