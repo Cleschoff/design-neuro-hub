@@ -46,10 +46,13 @@ const DashboardHeader = ({ toggleSidebar, sidebarOpen }: { toggleSidebar: () => 
         <Button variant="ghost" size="icon">
           <Settings size={20} />
         </Button>
-        <Avatar className="ml-2">
-          <AvatarImage src="https://i.pravatar.cc/150?img=28" alt="User" />
-          <AvatarFallback>U</AvatarFallback>
-        </Avatar>
+        <div className="flex items-center gap-2 ml-2">
+          <Avatar>
+            <AvatarImage src="/lovable-uploads/21499f82-6fe9-4421-bfca-e6e6187eea06.png" alt="Oleg" />
+            <AvatarFallback>O</AvatarFallback>
+          </Avatar>
+          <span className="text-sm font-medium hidden sm:block">Oleg</span>
+        </div>
       </div>
     </header>
   );
