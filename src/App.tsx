@@ -9,8 +9,9 @@ import { LocaleProvider } from "@/context/LocaleContext";
 
 // Pages
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
 import StartProject from "./pages/StartProject";
+import Resources from "./pages/Resources";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,8 +26,9 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/start-project" element={<StartProject />} />
+              <Route path="/dashboard/resources" element={<Resources />} />
+              <Route path="/dashboard/settings" element={<Settings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

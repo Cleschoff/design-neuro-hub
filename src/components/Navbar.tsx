@@ -3,11 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Brain } from "lucide-react";
-import { useLocale } from "@/context/LocaleContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useLocale();
 
   return (
     <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
@@ -19,17 +17,17 @@ const Navbar = () => {
               <Brain className="h-5 w-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neuro-teal to-neuro-lavender">
-              NeuroDesign
+              DIZ.SPACE
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link 
-              to="/dashboard" 
+              to="/dashboard/resources" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
-              Мои проекты
+              Ресурсы
             </Link>
             <Link 
               to="/dashboard/start-project" 
@@ -65,11 +63,11 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-border">
               <Link
-                to="/dashboard"
+                to="/dashboard/resources"
                 className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                Мои проекты
+                Ресурсы
               </Link>
               <Link
                 to="/dashboard/start-project"

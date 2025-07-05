@@ -1,9 +1,7 @@
 
 import { cn } from "@/lib/utils";
 import { 
-  BrainCircuit, Palette, Layout, Lightbulb, 
-  Settings, LogOut, FileText, Layers, WrenchIcon,
-  User, CheckSquare, Bell, BookOpen, Home, FolderOpen
+  Settings, LogOut, BookOpen, User
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useLocale } from "@/context/LocaleContext";
@@ -53,7 +51,6 @@ interface DashboardSidebarProps {
 const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const { t } = useLocale();
   
   // If the sidebar is closed, return a minimized version that only shows icons
   if (!sidebarOpen) {
@@ -67,66 +64,6 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
         
         <div className="flex flex-col items-center gap-4 px-1">
           <Link
-            to="/dashboard"
-            className={cn(
-              "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
-              currentPath === "/dashboard" 
-                ? "bg-secondary/80 text-foreground" 
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-            )}
-          >
-            <Home size={20} />
-          </Link>
-          
-          <Link
-            to="/dashboard/projects"
-            className={cn(
-              "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
-              currentPath.includes("/projects") 
-                ? "bg-secondary/80 text-foreground" 
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-            )}
-          >
-            <FolderOpen size={20} />
-          </Link>
-          
-          <Link
-            to="/dashboard/tasks"
-            className={cn(
-              "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
-              currentPath.includes("/tasks") 
-                ? "bg-secondary/80 text-foreground" 
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-            )}
-          >
-            <CheckSquare size={20} />
-          </Link>
-          
-          <Link
-            to="/dashboard/start-project"
-            className={cn(
-              "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
-              currentPath.includes("/start-project") 
-                ? "bg-secondary/80 text-foreground" 
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-            )}
-          >
-            <FileText size={20} />
-          </Link>
-          
-          <Link
-            to="/dashboard/design-tools"
-            className={cn(
-              "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
-              currentPath.includes("/design-tools") || currentPath.includes("/tools/")
-                ? "bg-secondary/80 text-foreground" 
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-            )}
-          >
-            <WrenchIcon size={20} />
-          </Link>
-
-          <Link
             to="/dashboard/resources"
             className={cn(
               "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
@@ -139,15 +76,15 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
           </Link>
           
           <Link
-            to="/dashboard/profile"
+            to="/dashboard/settings"
             className={cn(
               "flex items-center justify-center w-10 h-10 rounded-lg text-sm transition-all",
-              currentPath.includes("/profile") 
+              currentPath.includes("/settings") 
                 ? "bg-secondary/80 text-foreground" 
                 : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
             )}
           >
-            <User size={20} />
+            <Settings size={20} />
           </Link>
         </div>
       </aside>
@@ -159,79 +96,31 @@ const DashboardSidebar = ({ sidebarOpen }: DashboardSidebarProps) => {
       <div className="flex items-center h-16 px-4 border-b">
         <Link to="/" className="flex items-center">
           <span className="text-2xl font-bold bg-clip-text text-transparent neuro-gradient mr-2">D</span>
-          <span className="text-lg font-semibold">diz.space</span>
+          <span className="text-lg font-semibold">DIZ.SPACE</span>
         </Link>
       </div>
       
       <div className="px-3 py-2">
-        <SidebarSection title={t('dashboardSidebar.navigation')}>
-          <SidebarLink 
-            href="/dashboard" 
-            icon={<Home size={18} />} 
-            text={t('dashboardSidebar.home')} 
-            isActive={currentPath === "/dashboard"} 
-          />
-          <SidebarLink 
-            href="/dashboard/projects" 
-            icon={<FolderOpen size={18} />} 
-            text={t('dashboardSidebar.projects')} 
-            isActive={currentPath.includes("/projects")} 
-          />
-          <SidebarLink 
-            href="/dashboard/tasks" 
-            icon={<CheckSquare size={18} />} 
-            text={t('dashboardSidebar.tasks')} 
-            isActive={currentPath.includes("/tasks")} 
-          />
-        </SidebarSection>
-        
-        <SidebarSection title={t('dashboardSidebar.designServices')}>
-          <SidebarLink 
-            href="/dashboard/start-project" 
-            icon={<FileText size={18} />} 
-            text={t('dashboardSidebar.fullDesignProject')} 
-            isActive={currentPath.includes("/start-project")} 
-          />
-          <SidebarLink 
-            href="/dashboard/design-tools" 
-            icon={<WrenchIcon size={18} />} 
-            text={t('dashboardSidebar.designTools')} 
-            isActive={currentPath.includes("/design-tools") || currentPath.includes("/tools/")} 
-          />
-        </SidebarSection>
-
-        <SidebarSection title={t('dashboardSidebar.userResources')}>
+        <SidebarSection title="РЕСУРСЫ ПОЛЬЗОВАТЕЛЯ">
           <SidebarLink 
             href="/dashboard/resources" 
             icon={<BookOpen size={18} />} 
-            text={t('dashboardSidebar.resources')} 
+            text="Ресурсы" 
             isActive={currentPath.includes("/resources")} 
-          />
-          <SidebarLink 
-            href="/dashboard/notifications" 
-            icon={<Bell size={18} />} 
-            text={t('dashboardSidebar.notifications')} 
-            isActive={currentPath.includes("/notifications")} 
-          />
-          <SidebarLink 
-            href="/dashboard/profile" 
-            icon={<User size={18} />} 
-            text={t('dashboardSidebar.profile')} 
-            isActive={currentPath.includes("/profile")} 
           />
         </SidebarSection>
         
-        <SidebarSection title={t('dashboardSidebar.account')}>
+        <SidebarSection title="АККАУНТ">
           <SidebarLink 
             href="/dashboard/settings" 
             icon={<Settings size={18} />} 
-            text={t('dashboardSidebar.settings')} 
+            text="Настройки" 
             isActive={currentPath.includes("/settings")} 
           />
           <SidebarLink 
             href="/logout" 
             icon={<LogOut size={18} />} 
-            text={t('dashboardSidebar.logout')} 
+            text="Выйти" 
             isActive={false} 
           />
         </SidebarSection>

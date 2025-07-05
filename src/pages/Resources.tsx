@@ -6,55 +6,61 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, BookOpen, FileText, Lightbulb, Star, ArrowRight } from "lucide-react";
+import { Search, ExternalLink, Palette, Image, Type, Layout, Lightbulb } from "lucide-react";
 
-const resources = [
+const designResources = [
   {
     id: 1,
-    title: "How to Fill Out a Design Brief",
-    category: "Instructions",
-    description: "A comprehensive guide on how to properly fill out a design brief to get the best results from your design project.",
-    icon: FileText,
+    title: "Unsplash",
+    category: "Фотографии",
+    description: "Бесплатные высококачественные фотографии для любых проектов",
+    url: "https://unsplash.com",
+    icon: Image,
     featured: true
   },
   {
     id: 2,
-    title: "Understanding Color Theory",
-    category: "Design Tips",
-    description: "Learn how to use color theory principles to create harmonious and effective color palettes for your design projects.",
-    icon: Lightbulb,
+    title: "Coolors",
+    category: "Цвета",
+    description: "Генератор цветовых палитр и инструменты для работы с цветом",
+    url: "https://coolors.co",
+    icon: Palette,
     featured: true
   },
   {
     id: 3,
-    title: "Typography Best Practices",
-    category: "Design Tips",
-    description: "Explore the fundamentals of typography and how to select and pair fonts for maximum impact in your designs.",
-    icon: Lightbulb,
-    featured: false
+    title: "Google Fonts",
+    category: "Шрифты",
+    description: "Библиотека бесплатных веб-шрифтов от Google",
+    url: "https://fonts.google.com",
+    icon: Type,
+    featured: true
   },
   {
     id: 4,
-    title: "How to Use Design Tools",
-    category: "Instructions",
-    description: "Step-by-step instructions on how to use our design tools to generate mockups, select colors, and more.",
-    icon: FileText,
+    title: "Dribbble",
+    category: "Вдохновение",
+    description: "Платформа для поиска дизайнерского вдохновения",
+    url: "https://dribbble.com",
+    icon: Lightbulb,
     featured: false
   },
   {
     id: 5,
-    title: "Logo Design Principles",
-    category: "Design Tips",
-    description: "Essential guidelines for creating effective, memorable, and versatile logo designs.",
-    icon: Lightbulb,
+    title: "Figma",
+    category: "Инструменты",
+    description: "Профессиональный инструмент для UI/UX дизайна",
+    url: "https://figma.com",
+    icon: Layout,
     featured: true
   },
   {
     id: 6,
-    title: "Working with Project Checkpoints",
-    category: "Instructions",
-    description: "Learn how to use project checkpoints to track progress and ensure your design project stays on course.",
-    icon: FileText,
+    title: "Behance",
+    category: "Вдохновение",
+    description: "Портфолио креативных проектов от Adobe",
+    url: "https://behance.net",
+    icon: Lightbulb,
     featured: false
   }
 ];
@@ -67,15 +73,18 @@ const Resources = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const filteredResources = resources.filter(resource =>
+  const filteredResources = designResources.filter(resource =>
     resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     resource.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
     resource.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const featuredResources = filteredResources.filter(resource => resource.featured);
-  const instructionalResources = filteredResources.filter(resource => resource.category === "Instructions");
-  const designTips = filteredResources.filter(resource => resource.category === "Design Tips");
+  const colorResources = filteredResources.filter(resource => resource.category === "Цвета");
+  const fontResources = filteredResources.filter(resource => resource.category === "Шрифты");
+  const imageResources = filteredResources.filter(resource => resource.category === "Фотографии");
+  const inspirationResources = filteredResources.filter(resource => resource.category === "Вдохновение");
+  const toolResources = filteredResources.filter(resource => resource.category === "Инструменты");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -88,15 +97,15 @@ const Resources = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-2xl font-bold">Resources</h1>
-                <p className="text-muted-foreground">Tutorials, guides, and design tips to help you succeed</p>
+                <h1 className="text-2xl font-bold">Дизайнерские ресурсы</h1>
+                <p className="text-muted-foreground">Полезные инструменты и ресурсы для дизайнеров</p>
               </div>
             </div>
             
             <div className="relative max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={18} />
               <Input 
-                placeholder="Search resources..." 
+                placeholder="Поиск ресурсов..." 
                 className="pl-10" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -105,16 +114,18 @@ const Resources = () => {
             
             <Tabs defaultValue="all" className="space-y-6">
               <TabsList>
-                <TabsTrigger value="all">All Resources</TabsTrigger>
-                <TabsTrigger value="instructions">Instructions</TabsTrigger>
-                <TabsTrigger value="design-tips">Design Tips</TabsTrigger>
-                <TabsTrigger value="favorites">Favorites</TabsTrigger>
+                <TabsTrigger value="all">Все ресурсы</TabsTrigger>
+                <TabsTrigger value="colors">Цвета</TabsTrigger>
+                <TabsTrigger value="fonts">Шрифты</TabsTrigger>
+                <TabsTrigger value="images">Изображения</TabsTrigger>
+                <TabsTrigger value="inspiration">Вдохновение</TabsTrigger>
+                <TabsTrigger value="tools">Инструменты</TabsTrigger>
               </TabsList>
               
               <TabsContent value="all" className="space-y-6">
                 {featuredResources.length > 0 && (
                   <div>
-                    <h2 className="text-xl font-semibold mb-4">Featured Resources</h2>
+                    <h2 className="text-xl font-semibold mb-4">Рекомендуемые ресурсы</h2>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                       {featuredResources.map(resource => (
                         <Card key={resource.id} className="hover:shadow-md transition-shadow">
@@ -123,9 +134,6 @@ const Resources = () => {
                               <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                                 <resource.icon size={18} />
                               </div>
-                              <Button variant="ghost" size="icon">
-                                <Star size={16} className="text-muted-foreground" />
-                              </Button>
                             </div>
                             <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
                             <CardDescription className="text-xs uppercase">
@@ -136,8 +144,12 @@ const Resources = () => {
                             <p className="text-sm text-muted-foreground mb-4">
                               {resource.description}
                             </p>
-                            <Button variant="link" className="px-0 h-auto font-medium" size="sm">
-                              Read more <ArrowRight size={14} className="ml-1" />
+                            <Button 
+                              variant="outline" 
+                              className="w-full" 
+                              onClick={() => window.open(resource.url, '_blank')}
+                            >
+                              Открыть <ExternalLink size={14} className="ml-2" />
                             </Button>
                           </CardContent>
                         </Card>
@@ -147,18 +159,13 @@ const Resources = () => {
                 )}
                 
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">All Resources</h2>
+                  <h2 className="text-xl font-semibold mb-4">Все ресурсы</h2>
                   <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {filteredResources.map(resource => (
                       <Card key={resource.id} className="hover:shadow-md transition-shadow">
                         <CardHeader className="pb-2">
-                          <div className="flex justify-between items-start">
-                            <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
-                              <resource.icon size={18} />
-                            </div>
-                            <Button variant="ghost" size="icon">
-                              <Star size={16} className="text-muted-foreground" />
-                            </Button>
+                          <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                            <resource.icon size={18} />
                           </div>
                           <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
                           <CardDescription className="text-xs uppercase">
@@ -169,8 +176,12 @@ const Resources = () => {
                           <p className="text-sm text-muted-foreground mb-4">
                             {resource.description}
                           </p>
-                          <Button variant="link" className="px-0 h-auto font-medium" size="sm">
-                            Read more <ArrowRight size={14} className="ml-1" />
+                          <Button 
+                            variant="outline" 
+                            className="w-full" 
+                            onClick={() => window.open(resource.url, '_blank')}
+                          >
+                            Открыть <ExternalLink size={14} className="ml-2" />
                           </Button>
                         </CardContent>
                       </Card>
@@ -179,74 +190,139 @@ const Resources = () => {
                 </div>
               </TabsContent>
               
-              <TabsContent value="instructions" className="space-y-6">
-                <div>
-                  <h2 className="text-xl font-semibold mb-4">Instructions & Guides</h2>
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {instructionalResources.map(resource => (
-                      <Card key={resource.id} className="hover:shadow-md transition-shadow">
-                        <CardHeader className="pb-2">
-                          <div className="flex justify-between items-start">
-                            <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
-                              <resource.icon size={18} />
-                            </div>
-                            <Button variant="ghost" size="icon">
-                              <Star size={16} className="text-muted-foreground" />
-                            </Button>
-                          </div>
-                          <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-4">
-                            {resource.description}
-                          </p>
-                          <Button variant="link" className="px-0 h-auto font-medium" size="sm">
-                            Read more <ArrowRight size={14} className="ml-1" />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
+              <TabsContent value="colors">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {colorResources.map(resource => (
+                    <Card key={resource.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                          <resource.icon size={18} />
+                        </div>
+                        <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {resource.description}
+                        </p>
+                        <Button 
+                          variant="outline" 
+                          className="w-full" 
+                          onClick={() => window.open(resource.url, '_blank')}
+                        >
+                          Открыть <ExternalLink size={14} className="ml-2" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </TabsContent>
               
-              <TabsContent value="design-tips" className="space-y-6">
-                <div>
-                  <h2 className="text-xl font-semibold mb-4">Design Tips & Techniques</h2>
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {designTips.map(resource => (
-                      <Card key={resource.id} className="hover:shadow-md transition-shadow">
-                        <CardHeader className="pb-2">
-                          <div className="flex justify-between items-start">
-                            <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
-                              <resource.icon size={18} />
-                            </div>
-                            <Button variant="ghost" size="icon">
-                              <Star size={16} className="text-muted-foreground" />
-                            </Button>
-                          </div>
-                          <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-4">
-                            {resource.description}
-                          </p>
-                          <Button variant="link" className="px-0 h-auto font-medium" size="sm">
-                            Read more <ArrowRight size={14} className="ml-1" />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
+              <TabsContent value="fonts">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {fontResources.map(resource => (
+                    <Card key={resource.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                          <resource.icon size={18} />
+                        </div>
+                        <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {resource.description}
+                        </p>
+                        <Button 
+                          variant="outline" 
+                          className="w-full" 
+                          onClick={() => window.open(resource.url, '_blank')}
+                        >
+                          Открыть <ExternalLink size={14} className="ml-2" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </TabsContent>
               
-              <TabsContent value="favorites" className="space-y-6">
-                <Card className="p-6">
-                  <h3 className="text-lg font-medium mb-4">Favorites</h3>
-                  <p className="text-muted-foreground mb-6">You haven't saved any resources as favorites yet.</p>
-                  <Button>Browse Resources</Button>
-                </Card>
+              <TabsContent value="images">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {imageResources.map(resource => (
+                    <Card key={resource.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                          <resource.icon size={18} />
+                        </div>
+                        <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {resource.description}
+                        </p>
+                        <Button 
+                          variant="outline" 
+                          className="w-full" 
+                          onClick={() => window.open(resource.url, '_blank')}
+                        >
+                          Открыть <ExternalLink size={14} className="ml-2" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="inspiration">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {inspirationResources.map(resource => (
+                    <Card key={resource.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                          <resource.icon size={18} />
+                        </div>
+                        <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {resource.description}
+                        </p>
+                        <Button 
+                          variant="outline" 
+                          className="w-full" 
+                          onClick={() => window.open(resource.url, '_blank')}
+                        >
+                          Открыть <ExternalLink size={14} className="ml-2" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="tools">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {toolResources.map(resource => (
+                    <Card key={resource.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                          <resource.icon size={18} />
+                        </div>
+                        <CardTitle className="text-lg mt-2">{resource.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {resource.description}
+                        </p>
+                        <Button 
+                          variant="outline" 
+                          className="w-full" 
+                          onClick={() => window.open(resource.url, '_blank')}
+                        >
+                          Открыть <ExternalLink size={14} className="ml-2" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </TabsContent>
             </Tabs>
           </div>
