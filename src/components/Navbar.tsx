@@ -1,75 +1,94 @@
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { useTheme } from "@/context/ThemeProvider";
+import { Menu, X, Brain } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const { t } = useLocale();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-
   return (
-    <nav className="relative z-10 bg-background border-b">
+    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold bg-clip-text text-transparent neuro-gradient mr-2">D</span>
-              <span className="text-lg font-semibold">diz.space</span>
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="w-8 h-8 rounded-lg bg-neuro-teal flex items-center justify-center group-hover:bg-neuro-teal/80 transition-colors">
+              <Brain className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neuro-teal to-neuro-lavender">
+              NeuroDesign
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link 
+              to="/dashboard" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              Мои проекты
+            </Link>
+            <Link 
+              to="/dashboard/start-project" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              Создать проект
             </Link>
           </div>
-          
-          {/* Desktop nav */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
-            <Link to="/" className="nav-link nav-link-active">{t('navigation.home')}</Link>
-            <Link to="/features" className="nav-link">{t('navigation.features')}</Link>
-            <Link to="/pricing" className="nav-link">{t('navigation.pricing')}</Link>
-            <Link to="/community" className="nav-link">{t('navigation.community')}</Link>
-            <Button onClick={toggleTheme} variant="ghost" size="icon" className="ml-2">
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </Button>
-            <Link to="/dashboard">
-              <Button className="ml-4 bg-primary">{t('navigation.signIn')}</Button>
+
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link to="/dashboard/start-project">
+              <Button className="bg-neuro-teal hover:bg-neuro-teal/90">
+                Начать проект
+              </Button>
             </Link>
           </div>
-          
+
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <Button onClick={toggleTheme} variant="ghost" size="icon" className="mr-2">
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </Button>
-            <Button onClick={toggleMenu} variant="ghost" size="icon">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
           </div>
         </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-border">
+              <Link
+                to="/dashboard"
+                className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Мои проекты
+              </Link>
+              <Link
+                to="/dashboard/start-project"
+                className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Создать проект
+              </Link>
+              <div className="pt-2">
+                <Link to="/dashboard/start-project">
+                  <Button className="w-full bg-neuro-teal hover:bg-neuro-teal/90">
+                    Начать проект
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-b shadow-lg">
-          <div className="pt-2 pb-4 space-y-1 px-4">
-            <Link to="/" className="nav-link nav-link-active block py-2">{t('navigation.home')}</Link>
-            <Link to="/features" className="nav-link block py-2">{t('navigation.features')}</Link>
-            <Link to="/pricing" className="nav-link block py-2">{t('navigation.pricing')}</Link>
-            <Link to="/community" className="nav-link block py-2">{t('navigation.community')}</Link>
-            <Link to="/dashboard" className="block">
-              <Button className="w-full mt-4 bg-primary">{t('navigation.signIn')}</Button>
-            </Link>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
