@@ -12,6 +12,7 @@ const NeuroTeam = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleAssistantClick = (assistant: NeuroAssistant) => {
+    console.log("Assistant clicked:", assistant.title);
     setSelectedAssistant(assistant);
     setModalOpen(true);
   };
