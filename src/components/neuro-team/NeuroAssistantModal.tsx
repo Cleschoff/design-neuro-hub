@@ -1,26 +1,9 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { 
-  BrainCircuit, Palette, Layout, Lightbulb, 
-  BarChart, Search, FileText, Layers, Compass, MountainSnow,
-  Eye, Cpu, Database, Github, Cloud, Globe, Zap, Target, Users, TrendingUp
-} from "lucide-react";
-
-interface NeuroAssistant {
-  id: string;
-  title: string;
-  description: string;
-  icon: any;
-  color: string;
-  detailedDescription: string;
-  capabilities: string[];
-  tools: string[];
-  apis: string[];
-  workflow: string[];
-}
+import { Zap } from "lucide-react";
+import { NeuroAssistant } from "@/data/neuroAssistants";
 
 interface NeuroAssistantModalProps {
   assistant: NeuroAssistant | null;
